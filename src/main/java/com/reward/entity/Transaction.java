@@ -13,13 +13,13 @@ import jakarta.persistence.Table;
 public class Transaction {
 
 	@Id
-	@GeneratedValue(strategy =GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long txnId;
-	
+
 	private String custId;
-	
+
 	private Double amount;
-	
+
 	private LocalDate date;
 
 	public long getTxnId() {
@@ -37,8 +37,6 @@ public class Transaction {
 	public void setCustId(String custId) {
 		this.custId = custId;
 	}
-
-	
 
 	public Double getAmount() {
 		return amount;
@@ -60,6 +58,5 @@ public class Transaction {
 	public String toString() {
 		return "Transaction [txnId=" + txnId + ", custId=" + custId + ", amount=" + amount + ", date=" + date + "]";
 	}
-	
-	
+
 }

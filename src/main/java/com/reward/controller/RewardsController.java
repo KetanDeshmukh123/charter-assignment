@@ -19,20 +19,11 @@ public class RewardsController {
 	@Autowired 
 	RewardsService service;
 	
-	
-	  @Autowired 
-	  TransactionRepository repo;
-	 
-	
-	
-	
 	@GetMapping("/calculate-reward-points")
-	//public List<Reward> getCreditPoints(List<Transaction> trans) {
-	public List<Reward> getCreditPoints() {
-		List<Transaction> transList = repo.findAll();
-         List<Reward> rewardList =service.getrewardpoints(transList);
-         //List<Reward> rewardList =service.getrewardpoints();
-		
+	public List<Reward> getRewardPoints() {
+		List<Transaction> transList = service.getTransactionList();
+		List<Reward> rewardList = service.getrewardpoints(transList);
+
 		return rewardList;
 	}
 

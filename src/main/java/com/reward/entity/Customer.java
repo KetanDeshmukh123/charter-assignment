@@ -1,10 +1,9 @@
 package com.reward.entity;
 
-
 public class Customer {
-	
+
 	private Long custId;
-	
+
 	private String custName;
 
 	public Long getCustId() {
@@ -27,8 +26,5 @@ public class Customer {
 	public String toString() {
 		return "Customer [custId=" + custId + ", custName=" + custName + "]";
 	}
-
-	
-	
 
 }

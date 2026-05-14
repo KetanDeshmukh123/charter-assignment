@@ -6,8 +6,9 @@ import com.reward.dto.Reward;
 import com.reward.entity.Transaction;
 
 public interface RewardsService {
-	
+
 	public List<Reward> getrewardpoints(List<Transaction> trans);
-	//public List<Reward> getrewardpoints();
+
+	public List<Transaction> getTransactionList();
 
 }

@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-	 
+
 	@ExceptionHandler(InvalidTransactionException.class)
-	public ResponseEntity<String> handle(InvalidTransactionException ex){
+	public ResponseEntity<String> handle(InvalidTransactionException ex) {
 		return ResponseEntity.badRequest().body(ex.getMessage());
 	}
 
