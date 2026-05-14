@@ -2,6 +2,32 @@ package com.reward.dto;
 
 import java.util.Map;
 
+/**
+ * DTO class used to represent customer reward details.
+ * 
+ * This class contains:
+ * 
+ * Customer id
+ * Monthly reward points
+ * Total accumulated reward points
+ * 
+ * 
+ * This object is returned as API response to the client.
+ * 
+ * Example Response:
+ * 
+ * {
+ *   "custId": "CUST101",
+ *   "monthlyRewardPoints": {
+ *      "JANUARY": 120,
+ *      "FEBRUARY": 90
+ *   },
+ *   "totalRewardPoints": 210
+ * }
+ *
+ * 
+ * 
+ */
 public class Reward {
 	
 	private String custId;

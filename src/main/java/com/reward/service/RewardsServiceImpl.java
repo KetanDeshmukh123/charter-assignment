@@ -13,12 +13,32 @@ import com.reward.entity.Transaction;
 import com.reward.exception.InvalidTransactionException;
 import com.reward.repository.TransactionRepository;
 
+
+/**
+ * Service implementation class responsible for
+ * reward point calculation logic.
+ */
 @Service
 public class RewardsServiceImpl implements RewardsService {
 
 	@Autowired
 	TransactionRepository repo;
 
+	/**
+     * Calculates reward points for the given list of transactions.
+     * 
+     * This method:
+     * Calculates reward points for each transaction
+     * Groups rewards by customer and month
+     * Calculates total reward points per customer
+     * 
+     * @param transList List of customer transactions
+     * 
+     * @return List of reward summaries containing:
+     *         customer id,
+     *         monthly reward points,
+     *         total reward points
+     */
 	@Override
 	public List<Reward> getrewardpoints(List<Transaction> transList) {
 
@@ -57,6 +77,10 @@ public class RewardsServiceImpl implements RewardsService {
 		return rewardlist;
 	}
 
+	
+	/*
+	 * calculate reward points based on transaction amount
+	 */
 	private int calculaterewardpoints(Double amt) {
 
 		if (amt < 0) {
@@ -72,6 +96,11 @@ public class RewardsServiceImpl implements RewardsService {
 		return reward_points;
 	}
 
+	/**
+     * Retrieves all customer transactions from database.
+     * 
+     * return List of customer transactions
+     */
 	@Override
 	public List<Transaction> getTransactionList() {
 

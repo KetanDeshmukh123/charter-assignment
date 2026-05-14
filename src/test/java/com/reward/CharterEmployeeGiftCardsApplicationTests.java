@@ -1,4 +1,4 @@
-package com.reward.rewardpoints;
+package com.reward;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

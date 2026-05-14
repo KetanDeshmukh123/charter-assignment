@@ -8,6 +8,25 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * Entity class representing customer transaction details.
+ * 
+ * This entity stores purchase transaction information
+ * used for reward point calculation.
+ * 
+ * Mapped Database Table:
+ * customer_transaction
+ * 
+ * Each transaction contains:
+ * 
+ * Transaction id
+ * Customer id
+ * Transaction amount
+ * Transaction date
+ * 
+ * 
+ * 
+ */
 @Entity
 @Table(name = "customer_transaction")
 public class Transaction {

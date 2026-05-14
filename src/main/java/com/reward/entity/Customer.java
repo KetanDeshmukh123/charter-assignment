@@ -1,5 +1,6 @@
 package com.reward.entity;
 
+
 public class Customer {
 
 	private Long custId;

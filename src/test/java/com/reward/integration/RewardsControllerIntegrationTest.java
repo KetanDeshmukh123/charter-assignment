@@ -13,9 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.reward.CharterCustomerRewardsPointApplication;
 import com.reward.entity.Transaction;
 import com.reward.repository.TransactionRepository;
-import com.reward.rewardpoints.CharterCustomerRewardsPointApplication;
 
 
 @AutoConfigureMockMvc
