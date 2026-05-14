@@ -3,14 +3,18 @@ package com.reward.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.reward.dto.Reward;
 import com.reward.entity.Transaction;
-import com.reward.repository.TransactionRepository;
 import com.reward.service.RewardsService;
+
+import jakarta.validation.Valid;
 
 
 /**
@@ -22,6 +26,7 @@ import com.reward.service.RewardsService;
  * 
  * 
  */
+@Validated
 @RestController
 @RequestMapping("/rewards")
 public class RewardsController {
@@ -50,6 +55,23 @@ public class RewardsController {
 	@GetMapping("/calculate-reward-points")
 	public List<Reward> getRewardPoints() {
 		List<Transaction> transList = service.getTransactionList();
+		List<Reward> rewardList = service.getrewardpoints(transList);
+
+		return rewardList;
+	}
+	
+	
+	/*
+	 * calculate reward points for given transactions
+	 * @param list of transactions
+	 * @return reward points per customer
+	 */
+	@PostMapping("/calculate-reward-points")
+	public List<Reward> getRewardPoints(@RequestBody @Valid List<Transaction> transList) {
+		
+		if(transList == null || transList.isEmpty()) {
+			throw new IllegalArgumentException("Transaction list cannot be empty");
+		}
 		List<Reward> rewardList = service.getrewardpoints(transList);
 
 		return rewardList;

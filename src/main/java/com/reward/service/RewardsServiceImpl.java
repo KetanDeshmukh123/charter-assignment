@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.reward.dto.Reward;
 import com.reward.entity.Transaction;
-import com.reward.exception.InvalidTransactionException;
 import com.reward.repository.TransactionRepository;
+import com.reward.util.RewardUtil;
 
 
 /**
@@ -50,7 +50,7 @@ public class RewardsServiceImpl implements RewardsService {
 			String custId = trans.getCustId();
 			String month = trans.getDate().getMonth().toString();
 
-			int points = this.calculaterewardpoints(trans.getAmount());
+			int points = RewardUtil.calculateRewardPoints(trans.getAmount());
 
 			customerMonthlyRewards.putIfAbsent(custId, new HashMap<>());
 			customerTotalRewards.putIfAbsent(custId, 0);
@@ -77,24 +77,6 @@ public class RewardsServiceImpl implements RewardsService {
 		return rewardlist;
 	}
 
-	
-	/*
-	 * calculate reward points based on transaction amount
-	 */
-	private int calculaterewardpoints(Double amt) {
-
-		if (amt < 0) {
-			throw new InvalidTransactionException("Transaction is Invalid as transaction amount is negative");
-		}
-		int reward_points = 0;
-
-		if (amt > 100) {
-			reward_points = (int) ((amt - 100) * 2 + 50);
-		} else {
-			reward_points = (int) (amt - 50);
-		}
-		return reward_points;
-	}
 
 	/**
      * Retrieves all customer transactions from database.

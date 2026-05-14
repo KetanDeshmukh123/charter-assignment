@@ -7,6 +7,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Positive;
 
 /**
  * Entity class representing customer transaction details.
@@ -35,10 +39,14 @@ public class Transaction {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long txnId;
 
+	@NotBlank(message ="Customer ID cannot be blank")
 	private String custId;
 
+	@Positive(message ="Amount must be greater than 0")
 	private Double amount;
 
+	@NotNull(message ="Transaction date cannot be null")
+	@PastOrPresent(message ="transaction date cannot be in the future")
 	private LocalDate date;
 
 	public long getTxnId() {
